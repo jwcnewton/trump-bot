@@ -15,18 +15,6 @@ var T = new Twit({
 
 var filePath = './data/result.csv'
 
-var twitterData = fs.createReadStream(filePath)
-    .pipe(csvParse({ delimeter: ',' }))
-    .on('data', function(row) {
-        inputText = inputText + ' ' + cleanText(row[2]);
-    })
-    .on('end', function() {
-        var markov = new rita.RiMarkov(3);
-        markov.loadText(inputText);
-        var sentences = markov.generateSentences(1);
-        newPost(sentences);
-    });
-
 function cleanText(text) {
     return rita.RiTa.tokenize(text, ' ')
         .filter(hasNoStopWords)
@@ -50,3 +38,17 @@ function newPost(text) {
         }
     })
 }
+
+setInterval(function() {
+    var twitterData = fs.createReadStream(filePath)
+        .pipe(csvParse({ delimeter: ',' }))
+        .on('data', function(row) {
+            inputText = inputText + ' ' + cleanText(row[2]);
+        })
+        .on('end', function() {
+            var markov = new rita.RiMarkov(3);
+            markov.loadText(inputText);
+            var sentences = markov.generateSentences(1);
+            newPost(sentences);
+        });
+}, 13000000);
