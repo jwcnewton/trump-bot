@@ -1,19 +1,18 @@
 {
-  "name": "twitter-bot",
-  "version": "1.0.0",
-  "description": "twitter bot of sorts",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Jonathan",
-  "license": "MIT",
-  "dependencies": {
-    "bluebird": "^3.5.0",
-    "csv-parse": "^1.2.0",
-    "request": "^2.81.0",
-    "rita": "^1.1.63",
-    "twit": "^2.2.5"
-  }
+    "name": "twitter-bot",
+    "version": "1.0.0",
+    "description": "twitter bot of sorts",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "author": "Jonathan",
+    "license": "MIT",
+    "dependencies": {
+        "bluebird": "^3.5.0",
+        "csv-parse": "^1.2.0",
+        "request": "^2.81.0",
+        "rita": "^1.1.63",
+        "twit": "^2.2.5"
+    }
 }
