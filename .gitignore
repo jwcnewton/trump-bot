@@ -58,6 +58,4 @@ typings/
 # dotenv environment variables file
 .env
 
-# CSV
-*.csv
->>>>>>> f00675418994d388b79d3e194bd9732d0f2aebc9
+

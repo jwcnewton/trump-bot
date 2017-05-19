@@ -1,6 +1,6 @@
-var Twit = require('twit');
+const Twit = require('twit');
 
-var T = new Twit({
+const T = new Twit({
     consumer_key: process.env.BOTBEAR_KEY,
     consumer_secret: process.env.BOTBEAR_SECRET,
     access_token: process.env.BOTBEAR_TOKEN,
@@ -8,12 +8,15 @@ var T = new Twit({
     timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests.
 });
 
-exports.tweet = function publishTweet(text) {
+let publishTweet = (text) => {
     return T.post('statuses/update', { status: text }, function(err, data, response) {
         if (err) {
             console.log(err);
         } else {
             console.log("Tweeted");
         }
-    })
-}
+    });
+};
+
+exports.tweet = publishTweet;
+

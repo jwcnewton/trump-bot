@@ -1,11 +1,8 @@
-var request = require('request');
-var Promise = require('bluebird');
-
-var bingAPIKey = process.env.BING_SPELL_API_KEY;
+const request = require('request');
+const bingAPIKey = process.env.BING_SPELL_API_KEY;
 const bingAPI = "https://api.cognitive.microsoft.com/bing/v5.0/spellcheck/";
 
-
-module.exports = function spellCheck(text) {
+let spellCheck = (text) => {
     return new Promise(function(resolve, reject) {
         let url = bingAPI;
         let headers = {
@@ -25,16 +22,19 @@ module.exports = function spellCheck(text) {
             }
         });
     });
-}
+};
 
-function findAndReplaceFlaggedTokens(orginText, tokenizedGrammarChanges) {
+let findAndReplaceFlaggedTokens = (orginText, tokenizedGrammarChanges) => {
     tokenizedGrammarChanges.forEach(function(tokenizedGrammarChange) {
         tokenizedGrammarChange.suggestions.sort(highestScore);
         orginText = orginText.replace(tokenizedGrammarChange.token, tokenizedGrammarChange.suggestions[0].suggestion);
     }, this);
     return orginText;
-}
+};
 
-function highestScore(previousSuggestion, currentSuggestion) {
+let highestScore = (previousSuggestion, currentSuggestion) => {
     return Math.max(previousSuggestion.score, currentSuggestion.score);
-}
+};
+
+
+module.exports = spellCheck;
