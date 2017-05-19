@@ -4,7 +4,7 @@ const rita = require('rita');
 const filePath = '././data/result.csv';
 
 let markov = new rita.RiMarkov(3);
-var inputText = null;
+let inputText = null;
 
 let sentenceHandle = () => {
     return new Promise(function(resolve, reject) {
@@ -19,22 +19,22 @@ let sentenceHandle = () => {
 };
 
 let generateSentence = () => {
-    var sentence = markov.generateSentences(2)[0];
+    let sentence = markov.generateSentences(2)[0];
 
     while (sentence.length > 140) {
-        console.log("----  over  ----");
+        console.log('----  over  ----');
         sentence = markov.generateSentences(2)[0];
     }
-    //Additional Clean Up
+    // Additional Clean Up
     sentence = sentence.replace(/\/(\w+)/ig, '');
-    sentence.replace(/\\\//g, "/");
+    sentence.replace(/\\\//g, '/');
 
     return sentence;
 };
 
 let parseCSV = new Promise((resolve, reject) => {
     fs.createReadStream(filePath)
-        .pipe(csvParse({ delimeter: ',' }))
+        .pipe(csvParse({delimeter: ','}))
         .on('data', function(row) {
             inputText = inputText + ' ' + cleanText(row[2]);
         })
@@ -52,7 +52,7 @@ let cleanText = (text) => {
 };
 
 let hasNoStopWords = (token) => {
-    var stopWords = ['@', 'http', 'https', 'RT', ' ', '"', '..', '/', '//'];
+    let stopWords = ['@', 'http', 'https', 'RT', ' ', '"', '..', '/', '//'];
     return stopWords.every(function(sw) {
         return !token.includes(sw);
     });
