@@ -1,21 +1,27 @@
 {
-    "name": "twitter-bot",
-    "version": "1.0.0",
-    "description": "twitter bot of sorts",
-    "main": "index.js",
-    "scripts": {
-        "start": "node index.js"
-    },
-    "author": "Jonathan",
-    "license": "MIT",
-    "dependencies": {
-        "csv-parse": "^1.2.0",
-        "request": "^2.81.0",
-        "rita": "^1.1.63",
-        "twit": "^2.2.5"
-    },
-    "devDependencies": {
-        "eslint": "^3.19.0",
-        "eslint-config-google": "^0.7.1"
-    }
+  "name": "twitter-bot",
+  "version": "1.0.0",
+  "description": "twitter bot of sorts",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha"
+  },
+  "author": "Jonathan",
+  "license": "MIT",
+  "dependencies": {
+    "chia": "0.0.1",
+    "csv-parse": "^1.2.0",
+    "opbeat": "^4.13.3",
+    "request": "^2.81.0",
+    "rita": "^1.1.63",
+    "sinon": "^2.2.0",
+    "twit": "^2.2.5"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.7.1",
+    "chai": "*",
+    "mocha": "*"
+  }
 }

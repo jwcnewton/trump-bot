@@ -1,3 +1,7 @@
+/*eslint-disable */
+let opbeat = require('opbeat').start(); //opbeat fix your library
+/*eslint-enable */
+
 const sentenceHandle = require('./src/sentenceHandle.js');
 const grammarHandle = require('./src/grammarHandle.js');
 const twitterHandle = require('./src/twitterHandle.js');

@@ -12,16 +12,18 @@ let spellCheck = (text) => {
         let form = {text: text};
         request.post({url: url, form: form, headers: headers},
             function(e, r, body) {
-            let tokens = JSON.parse(body).flaggedTokens;
-            if (tokens.length > 0) {
-                console.log('Mistakes found');
-                let replacedTokens = findAndReplaceFlaggedTokens(text, tokens);
-                resolve(replacedTokens);
-            } else {
-                console.log('No mistakes found');
-                resolve(text);
-            }
-        });
+                let tokens = JSON.parse(body).flaggedTokens;
+                if (tokens.length > 0) {
+                    console.log('Mistakes found');
+                    let replacedTokens =
+                        findAndReplaceFlaggedTokens(text, tokens);
+
+                    resolve(replacedTokens);
+                } else {
+                    console.log('No mistakes found');
+                    resolve(text);
+                }
+            });
     });
 };
 
