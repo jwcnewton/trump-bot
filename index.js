@@ -1,5 +1,5 @@
 /*eslint-disable */
-let opbeat = require('opbeat').start(); //opbeat fix your library
+let opbeat = require('opbeat').start();
 /*eslint-enable */
 
 const sentenceHandle = require('./src/sentenceHandle.js');
@@ -13,3 +13,11 @@ setInterval(function() {
         });
     });
 }, 13000000);
+
+process.on('uncaughtException', (err) => {
+    opbeat.captureError(err);
+});
+
+process.on('unhandledRejection', (reason, p) => {
+    opbeat.captureError(reasons);
+});
