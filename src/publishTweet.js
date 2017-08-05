@@ -4,10 +4,12 @@ const twitterHandle = require('./twitterHandle.js');
 
 let sendTweet = () => {
     sentenceHandle.generateStatement().then((sentence) => {
-        grammarHandle(sentence).then(function(data) {
+        grammarHandle.spellCheck(sentence).then(function(data) {
             twitterHandle.tweet(data);
         });
     });
 };
 
 exports.sendTweet = sendTweet;
+exports.grammarEvents = grammarHandle.events;
+exports.twitterEvents = twitterHandle.events;

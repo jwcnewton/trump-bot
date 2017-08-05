@@ -1,6 +1,8 @@
 const request = require('request');
-const EventEmitter = require('events');
-
+const events = require('events');
+const EventEmitter = require('events').EventEmitter, 
+    emitter = new EventEmitter();
+    
 const bingAPIKey = process.env.BING_SPELL_API_KEY;
 const bingAPI = 'https://api.cognitive.microsoft.com/bing/v5.0/spellcheck/';
 const headers = {
@@ -30,7 +32,7 @@ let spellCheck = (text) => {
 
 let findAndReplaceFlaggedTokens = (originText, tokenizedGrammarChanges) => {
     tokenizedGrammarChanges.forEach(function(tokenizedGrammarChange) {
-        EventEmitter.emit('typo');
+        emitter.emit('typo');
         tokenizedGrammarChange.suggestions.sort(highestScore);
         originText = originText.replace(tokenizedGrammarChange.token,
                     tokenizedGrammarChange.suggestions[0].suggestion);
@@ -42,4 +44,5 @@ let highestScore = (previousSuggestion, currentSuggestion) => {
     return currentSuggestion.score - previousSuggestion.score;
 };
 
-module.exports = spellCheck;
+exports.spellCheck = spellCheck;
+exports.events = emitter;

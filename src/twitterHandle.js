@@ -1,5 +1,7 @@
 const Twit = require('twit');
-const EventEmitter = require('events');
+const events = require('events');
+const EventEmitter = require('events').EventEmitter, 
+    emitter = new EventEmitter();
 
 const T = new Twit({
     consumer_key: process.env.BOTBEAR_KEY,
@@ -16,11 +18,11 @@ let publishTweet = (text) => {
             if (err) {
                 console.log(err);
             } else {
-                EventEmitter.emit('newTweet');
+                emitter.emit('newTweet');
                 console.log('Tweeted');
             }
     });
 };
 
 exports.tweet = publishTweet;
-
+exports.events = emitter;

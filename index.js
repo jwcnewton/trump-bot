@@ -4,9 +4,7 @@ let opbeat = require('opbeat').start();
 
 const probe = require('pmx').probe();
 const pmx = require('pmx');
-const tweetPublished = require('./src/publishTweet.js');
-const EventEmitter = require('events');
-const myEmitter = new MyEmitter();
+const twitterPublisher = require('./src/publishTweet.js');
 
 var typoCount = 0;
 var tweetCount = 0;
@@ -25,21 +23,21 @@ const tweets = probe.metric({
     }
 });
 
-myEmitter.on('typo', () => {
+twitterPublisher.grammarEvents.on('typo', () => {
     typoCount++;
 });
 
-myEmitter.on('newTweet', () => {
+twitterPublisher.twitterEvents.on('newTweet', () => {
     tweetCount++;
 });
 
 pmx.action('tweet', function (reply) {
-    tweetPublished.sendTweet();
+    twitterPublisher.sendTweet();
     reply("Tweeted!");
 });
 
 setInterval(function () {
-    tweetPublished.sendTweet();
+    twitterPublisher.sendTweet();
 }, 13000000);
 
 
