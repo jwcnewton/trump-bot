@@ -9,8 +9,9 @@ setInterval(function () {
     tweetPublished.sendTweet();
 }, 13000000);
 
-pmx.action('tweet', function () {
+pmx.action('tweet', function (reply) {
     tweetPublished.sendTweet();
+    reply("Tweeted!");
 });
 
 process.on('uncaughtException', (err) => {
