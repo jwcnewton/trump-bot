@@ -4,7 +4,8 @@
   "description": "twitter bot of sorts",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js & pm2 link dgitb2hpvz3y9tu fh65d82k7s9kxzi",
+    "preinstall": "npm install pm2 -g",
+    "start": "pm2 start index.js -i max --attach & pm2 link dgitb2hpvz3y9tu fh65d82k7s9kxzi",
     "test": "mocha"
   },
   "author": "Jonathan",
