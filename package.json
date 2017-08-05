@@ -4,7 +4,7 @@
   "description": "twitter bot of sorts",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "pm2 start index.js & pm2 link dgitb2hpvz3y9tu fh65d82k7s9kxzi",
     "test": "mocha"
   },
   "author": "Jonathan",
@@ -13,6 +13,8 @@
     "chia": "0.0.1",
     "csv-parse": "^1.2.0",
     "opbeat": "^4.13.3",
+    "pm2": "^2.6.1",
+    "pmx": "^1.2.0",
     "request": "^2.81.0",
     "rita": "^1.1.63",
     "sinon": "^2.2.0",
