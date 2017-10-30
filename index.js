@@ -40,7 +40,6 @@ setInterval(function () {
     twitterPublisher.sendTweet();
 }, 13000000);
 
-
 process.on('uncaughtException', (err) => {
     opbeat.captureError(err);
 });
