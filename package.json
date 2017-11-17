@@ -12,18 +12,18 @@
   "license": "MIT",
   "dependencies": {
     "chia": "0.0.1",
-    "csv-parse": "^1.2.0",
+    "csv-parse": "^2.0.0",
     "opbeat": "^4.13.3",
     "pm2": "^2.6.1",
     "pmx": "^1.2.0",
     "request": "^2.81.0",
     "rita": "^1.1.63",
-    "sinon": "^2.2.0",
+    "sinon": "^4.1.2",
     "twit": "^2.2.5"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
-    "eslint-config-google": "^0.7.1",
+    "eslint": "^4.11.0",
+    "eslint-config-google": "^0.9.1",
     "chai": "*",
     "mocha": "*"
   }
