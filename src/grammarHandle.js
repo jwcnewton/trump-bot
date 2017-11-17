@@ -1,8 +1,7 @@
 const request = require('request');
-const events = require('events');
-const EventEmitter = require('events').EventEmitter, 
-    emitter = new EventEmitter();
-    
+const EventEmitter = require('events').EventEmitter;
+const emitter = new EventEmitter();
+
 const bingAPIKey = process.env.BING_SPELL_API_KEY;
 const bingAPI = 'https://api.cognitive.microsoft.com/bing/v5.0/spellcheck/';
 const headers = {

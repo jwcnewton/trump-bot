@@ -1,26 +1,25 @@
 /*eslint-disable */
 let opbeat = require('opbeat').start();
-/*eslint-enable */
-
-const probe = require('pmx').probe();
+/* eslint-enable */
 const pmx = require('pmx');
+const probe = pmx.probe();
 const twitterPublisher = require('./src/publishTweet.js');
 
-var typoCount = 0;
-var tweetCount = 0;
+let typoCount = 0;
+let tweetCount = 0;
 
-const typos = probe.metric({
+probe.metric({
     name: 'Typo Count',
-    value: function () {
+    value: function() {
         return typoCount;
-    }
+    },
 });
 
-const tweets = probe.metric({
+probe.metric({
     name: 'Tweet Count',
-    value: function () {
+    value: function() {
         return tweetCount;
-    }
+    },
 });
 
 twitterPublisher.grammarEvents.on('typo', () => {
@@ -31,12 +30,12 @@ twitterPublisher.twitterEvents.on('newTweet', () => {
     tweetCount++;
 });
 
-pmx.action('tweet', function (reply) {
+pmx.action('tweet', function(reply) {
     twitterPublisher.sendTweet();
-    reply("Tweeted!");
+    reply('Tweeted!');
 });
 
-setInterval(function () {
+setInterval(function() {
     twitterPublisher.sendTweet();
 }, 13000000);
 
@@ -45,5 +44,5 @@ process.on('uncaughtException', (err) => {
 });
 
 process.on('unhandledRejection', (reason, p) => {
-    opbeat.captureError(reasons);
+    opbeat.captureError(reason);
 });

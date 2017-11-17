@@ -1,7 +1,6 @@
 const Twit = require('twit');
-const events = require('events');
-const EventEmitter = require('events').EventEmitter, 
-    emitter = new EventEmitter();
+const EventEmitter = require('events').EventEmitter;
+const emitter = new EventEmitter();
 
 const T = new Twit({
     consumer_key: process.env.BOTBEAR_KEY,
