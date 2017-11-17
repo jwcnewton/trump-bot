@@ -21,7 +21,7 @@ let sentenceHandle = () => {
 let generateSentence = () => {
     let sentence = markov.generateSentences(2)[0];
 
-    while (sentence.length > 140) {
+    while (sentence.length > 280) {
         console.log('----  over  ----');
         sentence = markov.generateSentences(2)[0];
     }
