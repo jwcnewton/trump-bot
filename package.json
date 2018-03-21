@@ -18,7 +18,7 @@
     "pmx": "^1.2.0",
     "request": "^2.81.0",
     "rita": "^1.1.63",
-    "sinon": "^4.1.2",
+    "sinon": "^5.0.0",
     "twit": "^2.2.5"
   },
   "devDependencies": {
